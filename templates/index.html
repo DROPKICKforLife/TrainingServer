@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Training PAGE</title>
+    </head>
+    <body>
+        <h1>Training PAGE</h1>
+        <fieldset style="width: 30%">
+            <legend>Tree Training</legend>
+            <form action="./TreeTraining" method="POST" id="TreeSet">
+            {% load static %}
+                <center><img src="./static/images/{{ filename }}" style="width:280px;height:280px;" /></center>
+                <br/>
+
+                {% for i , j in tq %}
+
+                    {% ifequal j 'howmany' %}
+                        <center>{{ i }}<br/><input type="textbox" id="type1" placeholder="{{tree}}" /></center><br/>
+                    {% endifequal %}
+                    {% ifequal j "yesno" %}
+                <center>{{ i }}<br/>
+                    <input type="radio" name="radio{{ forloop.counter }} " value="yes" />네
+                    <input type="radio" name="radio{{ forloop.counter }}" value="no" />아니요
+                </center><br/>
+                    {% endifequal %}
+                    {% ifequal j "degree" %}
+                        <center>{{ i }}<br/>
+                            <input type="radio" name="radio{{ forloop.counter }}" value="1" />1
+                            <input type="radio" name="radio{{ forloop.counter }}" value="2" />2
+                            <input type="radio" name="radio{{ forloop.counter }}" value="3" />3
+                            <input type="radio" name="radio{{ forloop.counter }}" value="4" />4
+                            <input type="radio" name="radio{{ forloop.counter }}" value="5" />5
+                        </center><br/>
+                    {% endifequal %}
+                {% endfor %}
+                <center><input type="button" value="저장후 다음그림" /></center>
+
+            </form>
+        </fieldset>
+    </body>
+
+</html>
