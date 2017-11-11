@@ -24,6 +24,6 @@ SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 urlpatterns = [
     path('', views.index,name='index'),
     path('tree',views.treeTrain,name='treeTrain'),
-
+    path('train',views.getTrain,name='getTrain')
 ] + static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
 

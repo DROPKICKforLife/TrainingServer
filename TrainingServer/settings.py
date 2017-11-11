@@ -73,11 +73,17 @@ WSGI_APPLICATION = 'TrainingServer.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
-
+import configparser
+config = configparser.ConfigParser()
+config.read('config.ini')
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': config['DBSetting']['name'],
+        'USER':config['DBSetting']['user'],
+        'PASSWORD':config['DBSetting']['pass'],
+        'HOST':config['DBSetting']['host'],
+        'PORT':config['DBSetting']['port']
     }
 }
 
