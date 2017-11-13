@@ -7,10 +7,11 @@
     <body>
         <h1>Training PAGE</h1>
         <fieldset style="width: 30%">
-            <legend>Tree Training</legend>
+            <legend>{{ treenum }}/{{ maxnum }} Tree Training</legend>
             <form action="train" method="POST" id="TreeSet">
             {% load static %}
-                <center><img src="./static/images/{{ filename }}" style="width:280px;height:280px;" /></center>
+                <!--<center><img src="./static/images/{{ filename }}" style="width:280px;height:280px;" /></center>-->
+                <center><img src="data:image/png;base64,{{ treedata }}", style="width:280px;"/></center>
                 <br/>
 
                 {% for i , j in tq %}
