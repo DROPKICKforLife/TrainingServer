@@ -6,10 +6,10 @@ import glob
 import re
 import random
 from django.http import HttpResponseRedirect
-from .models import Trees
 from PIL import Image
 import io
 import base64
+from .models import Trees
 from matplotlib import pyplot as plt
 import numpy as np
 def index(request):
@@ -57,30 +57,18 @@ def treeTrain(request):
         treearr = np.load('tree.npy')
         filecounts = len(treearr)
         print(filecounts)
-        tf = False
+        tf = True
         while True:
             ran = random.randrange(0, filecounts)
-            for i in  Trees.objects.all():
+            for i in Trees.objects.all():
                 if ran != int(i.treeID)-1:
                     tf = True
-                    print("tf == True01")
                 else:
                     tf = False
-                    print("tf != True01")
                     break
-                pass
             if tf == True:
-                print("tf == True02")
                 break
-            else:
-                print("tf != True02")
-                continue
         pass
-
-
-
-
-
 
         # for i in Trees.objects.all():
         #     while True:
