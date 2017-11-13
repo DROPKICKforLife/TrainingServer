@@ -61,21 +61,19 @@ def treeTrain(request):
         while True:
             ran = random.randrange(0, filecounts)
             for i in  Trees.objects.all():
-
                 if ran != int(i.treeID)-1:
                     tf = True
-                    print("tf == True")
+                    print("tf == True01")
                 else:
                     tf = False
-                    print("tf != True")
+                    print("tf != True01")
                     break
                 pass
-            pass
             if tf == True:
-                print("tf == True")
+                print("tf == True02")
                 break
             else:
-                print("tf != True")
+                print("tf != True02")
                 continue
         pass
 
