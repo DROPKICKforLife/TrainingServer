@@ -64,15 +64,18 @@ def treeTrain(request):
 
                 if ran != int(i.treeID)-1:
                     tf = True
-                    continue
+                    print("tf == True")
                 else:
                     tf = False
+                    print("tf != True")
                     break
                 pass
             pass
             if tf == True:
+                print("tf == True")
                 break
             else:
+                print("tf != True")
                 continue
         pass
 
