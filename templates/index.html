@@ -5,10 +5,17 @@
         <title>Training PAGE</title>
     </head>
     <body>
+    <script>
+    function press(f){
+        if(f.keyCode == 13){
+            traningFrm.submit();
+        }
+    }
+</script>
         <h1>Training PAGE</h1>
         <fieldset style="width: 30%">
             <legend>{{ treenum }}/{{ maxnum }} Tree DATASET Training</legend>
-            <form action="train" method="POST" id="TreeSet">
+            <form action="train" method="POST" id="TreeSet" name="traningFrm">
             {% load static %}
                 <!--<center><img src="./static/images/{{ filename }}" style="width:280px;height:280px;" /></center>-->
                 <center><img src="data:image/png;base64,{{ treedata }}", style="width:280px;"/></center>
@@ -17,21 +24,21 @@
                 {% for i , j in tq %}
 
                     {% ifequal j 'howmany' %}
-                        <center>{{ i }}<br/><input type="textbox" name="quest{{ forloop.counter }}" placeholder="{{tree}}" /></center><br/>
+                        <center>{{ i }}<br/><input type="textbox" name="quest{{ forloop.counter }}" placeholder="{{tree}}" onkeypress="JavaScript:press(this.form)"/></center><br/>
                     {% endifequal %}
                     {% ifequal j "yesno" %}
                 <center>{{ i }}<br/>
-                    <input type="radio" name="quest{{ forloop.counter }}" value="yes" />네
-                    <input type="radio" name="quest{{ forloop.counter }}" value="no" />아니요
+                    <input type="radio" name="quest{{ forloop.counter }}" value="yes" onkeypress="JavaScript:press(this.form)"/>네
+                    <input type="radio" name="quest{{ forloop.counter }}" value="no" onkeypress="JavaScript:press(this.form)"/>아니요
                 </center><br/>
                     {% endifequal %}
                     {% ifequal j "degree" %}
                         <center>{{ i }}<br/>
-                            <input type="radio" name="quest{{ forloop.counter }}" value="1" />1
-                            <input type="radio" name="quest{{ forloop.counter }}" value="2" />2
-                            <input type="radio" name="quest{{ forloop.counter }}" value="3" />3
-                            <input type="radio" name="quest{{ forloop.counter }}" value="4" />4
-                            <input type="radio" name="quest{{ forloop.counter }}" value="5" />5
+                            <input type="radio" name="quest{{ forloop.counter }}" value="1" onkeypress="JavaScript:press(this.form)"/>1
+                            <input type="radio" name="quest{{ forloop.counter }}" value="2" onkeypress="JavaScript:press(this.form)"/>2
+                            <input type="radio" name="quest{{ forloop.counter }}" value="3" onkeypress="JavaScript:press(this.form)"/>3
+                            <input type="radio" name="quest{{ forloop.counter }}" value="4" onkeypress="JavaScript:press(this.form)"/>4
+                            <input type="radio" name="quest{{ forloop.counter }}" value="5" onkeypress="JavaScript:press(this.form)"/>5
                         </center><br/>
                     {% endifequal %}
                 {% endfor %}
