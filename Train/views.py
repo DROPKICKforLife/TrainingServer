@@ -56,16 +56,41 @@ def treeTrain(request):
 
         treearr = np.load('tree.npy')
         filecounts = len(treearr)
-        for i in Trees.objects.all():
-            while True:
-                ran = random.randrange(0,filecounts)
-                if ran == int(i.treeID)-1:
+        print(filecounts)
+        tf = False
+        while True:
+            ran = random.randrange(0, filecounts)
+            for i in  Trees.objects.all():
+
+                if ran != int(i.treeID)-1:
+                    tf = True
                     continue
                 else:
-                    print("random int : %s"%ran)
+                    tf = False
                     break
-                    pass
                 pass
+            pass
+            if tf == True:
+                break
+            else:
+                continue
+        pass
+
+
+
+
+
+
+        # for i in Trees.objects.all():
+        #     while True:
+        #         ran = random.randrange(0,filecounts)
+        #         if ran == int(i.treeID)-1:
+        #             continue
+        #         else:
+        #             print("random int : %s"%ran)
+        #             break
+        #             pass
+        #         pass
 
         img = np.reshape(treearr[ran],(28,28))
         imarr = Image.fromarray(img)
