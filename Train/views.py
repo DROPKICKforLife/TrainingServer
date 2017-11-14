@@ -150,7 +150,6 @@ def getTrain(request):
         Answer10 = answer[9],
         Answer11 = answer[10],
         Answer12 = answer[11],
-        Answer13 = answer[12],
         confirm = True
     )
     query.save()
