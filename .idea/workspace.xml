@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="991942b8-89f5-49d1-8975-f90b2e426ec1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Questions.ini" afterPath="$PROJECT_DIR$/Questions.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train/models.py" afterPath="$PROJECT_DIR$/Train/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Train/views.py" afterPath="$PROJECT_DIR$/Train/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -62,7 +60,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Train/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="242">
@@ -85,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Questions.ini" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Questions.ini" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Questions.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+            <state relative-caret-position="44">
+              <caret line="2" column="9" lean-forward="false" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -112,9 +110,9 @@
         <option value="$PROJECT_DIR$/Train/urls.py" />
         <option value="$PROJECT_DIR$/TrainingServer/urls.py" />
         <option value="$PROJECT_DIR$/templates/index.html" />
-        <option value="$PROJECT_DIR$/Questions.ini" />
         <option value="$PROJECT_DIR$/Train/views.py" />
         <option value="$PROJECT_DIR$/Train/models.py" />
+        <option value="$PROJECT_DIR$/Questions.ini" />
       </list>
     </option>
   </component>
@@ -372,14 +370,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Questions.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="825">
@@ -405,6 +395,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="11" column="55" lean-forward="false" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Questions.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="9" lean-forward="false" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
           <folding />
         </state>
       </provider>
