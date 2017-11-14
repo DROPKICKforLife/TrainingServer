@@ -121,19 +121,20 @@ def getTrain(request):
     print(postdata)
     treenum = postdata['treenum']
     postdata.pop('treenum',None)
-    print(postdata)
-    for i in postdata.values():
-        print(i)
-        if i == 'yes':
+    import operator
+    postdata = sorted(postdata.items(),key=operator.itemgetter(0))
+    print(type(postdata))
+    for i in postdata:
+        if i[1] == 'yes':
             answer.append(1)
             continue
             pass
-        elif i == 'no':
+        elif i[1] == 'no':
             answer.append(0)
             continue
             pass
         else:
-            answer.append(int(i))
+            answer.append(int(i[1]))
             pass
 
         pass
