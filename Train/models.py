@@ -10,12 +10,6 @@ class Trees(models.Model):
     Answer4 = models.IntegerField('Answer4', null=True)
     Answer5 = models.IntegerField('Answer5', null=True)
     Answer6 = models.IntegerField('Answer6', null=True)
-    Answer7 = models.IntegerField('Answer7', null=True)
-    Answer8 = models.IntegerField('Answer8', null=True)
-    Answer9 = models.IntegerField('Answer9', null=True)
-    Answer10 = models.IntegerField('Answer10', null=True)
-    Answer11 = models.IntegerField('Answer11', null=True)
-    Answer12 = models.IntegerField('Answer12', null=True)
 
 
 
