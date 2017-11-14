@@ -14,6 +14,9 @@ class Trees(models.Model):
     Answer8 = models.IntegerField('Answer8', null=True)
     Answer9 = models.IntegerField('Answer9', null=True)
     Answer10 = models.IntegerField('Answer10', null=True)
+    Answer11 = models.IntegerField('Answer11', null=True)
+    Answer12 = models.IntegerField('Answer12', null=True)
+    Answer13 = models.IntegerField('Answer13', null=True)
 
 
 

@@ -143,6 +143,14 @@ def getTrain(request):
         Answer3 = answer[2],
         Answer4 = answer[3],
         Answer5 = answer[4],
+        Answer6 = answer[5],
+        Answer7 = answer[6],
+        Answer8 = answer[7],
+        Answer9 = answer[8],
+        Answer10 = answer[9],
+        Answer11 = answer[10],
+        Answer12 = answer[11],
+        Answer13 = answer[12],
         confirm = True
     )
     query.save()
