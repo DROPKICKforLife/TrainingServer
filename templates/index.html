@@ -29,14 +29,14 @@
                     {% ifequal j "yesno" %}
                 <center>{{ i }}<br/>
                     <input type="radio" name="quest{{ forloop.counter }}" value="yes" onkeypress="JavaScript:press(this.form)"/>네
-                    <input type="radio" name="quest{{ forloop.counter }}" value="no" onkeypress="JavaScript:press(this.form)"/>아니요
+                    <input type="radio" name="quest{{ forloop.counter }}" value="no" onkeypress="JavaScript:press(this.form)" checked="checked"/>아니요
                 </center><br/>
                     {% endifequal %}
                     {% ifequal j "degree" %}
                         <center>{{ i }}<br/>
                             <input type="radio" name="quest{{ forloop.counter }}" value="1" onkeypress="JavaScript:press(this.form)"/>1
                             <input type="radio" name="quest{{ forloop.counter }}" value="2" onkeypress="JavaScript:press(this.form)"/>2
-                            <input type="radio" name="quest{{ forloop.counter }}" value="3" onkeypress="JavaScript:press(this.form)"/>3
+                            <input type="radio" name="quest{{ forloop.counter }}" value="3" onkeypress="JavaScript:press(this.form)" checked="checked"/>3
                             <!--<input type="radio" name="quest{{ forloop.counter }}" value="4" onkeypress="JavaScript:press(this.form)"/>4-->
                             <!--<input type="radio" name="quest{{ forloop.counter }}" value="5" onkeypress="JavaScript:press(this.form)"/>5-->
                         </center><br/>
