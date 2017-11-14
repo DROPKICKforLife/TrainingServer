@@ -120,7 +120,7 @@ def getTrain(request):
     answer = []
     print(postdata)
     treenum = postdata['treenum']
-    postdata.popitem()
+    postdata.pop('treenum',None)
     print(postdata)
     for i in postdata.values():
         print(i)
