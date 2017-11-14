@@ -121,6 +121,7 @@ def getTrain(request):
     print(postdata)
     treenum = postdata['treenum']
     postdata.popitem()
+    print(postdata)
     for i in postdata.values():
         print(i)
         if i == 'yes':
@@ -136,6 +137,7 @@ def getTrain(request):
             pass
 
         pass
+    print(answer)
     query = Trees.objects.create(
         treeID = treenum,
         Answer1 = answer[0],
