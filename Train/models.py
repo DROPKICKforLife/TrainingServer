@@ -10,6 +10,9 @@ class Trees(models.Model):
     Answer4 = models.IntegerField('Answer4', null=True)
     Answer5 = models.IntegerField('Answer5', null=True)
     Answer6 = models.IntegerField('Answer6', null=True)
+class Imgs(models.Model):
+    ImgNum = models.IntegerField('ImgNum')
+    ImgData= models.TextField('ImgData',max_length=31340)
 
 
 

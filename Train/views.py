@@ -10,34 +10,73 @@ from PIL import Image
 import io
 import base64
 from .models import Trees
+from .models import Imgs
 from matplotlib import pyplot as plt
 import numpy as np
+from .preopen import XYData
+xy = XYData()
+for i in range(np.size(xy.count)):
+    # trees[i] = np.reshape(trees[i],(28,28))
+    maxLen = Imgs.objects.count()
+    if i < maxLen:
+        continue
+
+    for j in range(xy.count[i]):
+        plt.plot(xy.x[i][j], xy.y[i][j], color='black')
+    plt.axis('off')
+    btio = io.BytesIO()
+    file = plt.savefig(btio, format='png', facecolor='w')
+    btio = btio.getvalue()
+    encodebyte = base64.b64encode(btio)
+    strPNG = encodebyte.decode('ascii')
+    sql = Imgs.objects.create(
+    ImgNum=i,
+    ImgData=strPNG
+    )
+    sql.save()
+    print(str(i) + " fin.")
+
+
+
 def index(request):
-    trees = np.load('tree.npy')
-    print(trees.size)
     for i in range(1):
-        print(trees[i])
         # trees[i] = np.reshape(trees[i],(28,28))
-        img = np.reshape(trees[i],(28,28))
-        print(np.shape(img))
-        im = Image.fromarray(img)
-        image = im.crop()
-        bytearr = io.BytesIO()
-        image.save(bytearr,format="PNG")
-        bytearr = bytearr.getvalue()
-        encodebyte = base64.b64encode(bytearr)
-        str = encodebyte.decode('ascii')
-        print(str)
-        im.show()
-        print(np.size(trees))
-        print(len(trees))
-        return HttpResponse("""
-        <html>
-            <img src='data:image/png;base64,%s' style='width:280px'/>
-        
-        </html>
-        
-        """%str)
+        maxLen = Imgs.objects.count()
+        if i < maxLen:
+            continue
+
+        for j in range(xy.count[i]):
+            plt.plot(xy.x[i][j],xy.y[i][j],color='black')
+        plt.axis('off')
+        btio = io.BytesIO()
+        file = plt.savefig(btio, format='png', facecolor='w')
+        btio = btio.getvalue()
+        encodebyte = base64.b64encode(btio)
+        strPNG = encodebyte.decode('ascii')
+        sql = Imgs.objects.create(
+            ImgNum = i,
+            ImgData = strPNG
+        )
+        sql.save()
+        print(str(i)+" fin.")
+        #im = Image.fromarray([xy.x[i],xy.y[i]])
+        # image = im.crop()
+        # bytearr = io.BytesIO()
+        # image.save(bytearr,format="PNG")
+        # bytearr = bytearr.getvalue()
+        # encodebyte = base64.b64encode(bytearr)
+        # str = encodebyte.decode('ascii')
+        # print(str)
+        # im.show()
+        # print(np.size(trees))
+        # print(len(trees))
+        # return HttpResponse("""
+        # <html>
+        #     <img src='data:image/png;base64,%s' style='width:280px'/>
+        #
+        # </html>
+        #
+        # """%str)
 
     return HttpResponse("HI")
     pass
@@ -150,6 +189,7 @@ def getTrain(request):
         confirm = True
     )
     query.save()
+
     return HttpResponseRedirect('tree')
     pass
 # Create your views here.
