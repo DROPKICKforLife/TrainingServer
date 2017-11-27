@@ -14,19 +14,18 @@
 </script>
         <h1>Training PAGE</h1>
         <fieldset style="width: 40%">
-            <legend>{{ treenum }}/{{ maxnum }} Tree DATASET Training</legend>
+            <legend>{{ housenum }}/{{ maxnum }} House DATASET Training</legend>
             <h2>{{ count }}개의 DataSet이 저장되어있습니다.</h2>
-            <form action="train" method="POST" id="TreeSet" name="traningFrm">
+            <form action="train" method="POST" id="HouseSet" name="traningFrm">
             {% load static %}
                 <!--<center><img src="./static/images/{{ filename }}" style="width:280px;height:280px;" /></center>-->
-{#                <center><img src="data:image/png;base64,{{ treedata }}", style="width:280px;"/></center>#}
-                <center><img src="./static/images/{{ treeurl }}" style="width:280px;height:280px;"/> </center>
+                <center><img src="data:image/png;base64,{{ housedata }}", style="width:280px;"/></center>
                 <br/>
 
-                {% for i , j in tq %}
+                {% for i , j in hq %}
 
                     {% ifequal j 'howmany' %}
-                        <center>{{ i }}<br/><input type="textbox" name="quest{{ forloop.counter }}" placeholder="{{tree}}" onkeypress="JavaScript:press(this.form)"/></center><br/>
+                        <center>{{ i }}<br/><input type="textbox" name="quest{{ forloop.counter }}" placeholder="{{house}}" onkeypress="JavaScript:press(this.form)"/></center><br/>
                     {% endifequal %}
                     {% ifequal j "yesno" %}
                 <center>{{ i }}<br/>
@@ -44,7 +43,7 @@
                         </center><br/>
                     {% endifequal %}
                 {% endfor %}
-                <input type="hidden" name="treenum" value="{{ treenum }}"/>
+                <input type="hidden" name="housenum" value="{{ housenum }}"/>
                 <center><input type="submit" value="저장후 다음그림" /></center>
 
             </form>

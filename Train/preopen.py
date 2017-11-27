@@ -22,7 +22,6 @@ class XYData:
                 self.x.append(xx)
                 self.y.append(yy)
                 self.count.append(cnt)
-
 # xy = XYData()
 # print(xy.count[0])
 # for j in range(xy.count[0]):

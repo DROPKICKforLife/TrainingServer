@@ -10,76 +10,50 @@ from PIL import Image
 import io
 import base64
 from .models import Trees
-from .models import Imgs
+from .models import Houses
 from matplotlib import pyplot as plt
 import numpy as np
-from .preopen import XYData
-xy = XYData()
-for i in range(np.size(xy.count)):
-    # trees[i] = np.reshape(trees[i],(28,28))
-    maxLen = Imgs.objects.count()
-    if i < maxLen:
-        continue
-
-    for j in range(xy.count[i]):
-        plt.plot(xy.x[i][j], xy.y[i][j], color='black')
-    plt.axis('off')
-    btio = io.BytesIO()
-    file = plt.savefig(btio, format='png', facecolor='w')
-    btio = btio.getvalue()
-    encodebyte = base64.b64encode(btio)
-    strPNG = encodebyte.decode('ascii')
-    sql = Imgs.objects.create(
-    ImgNum=i,
-    ImgData=strPNG
-    )
-    sql.save()
-    print(str(i) + " fin.")
-
 
 
 def index(request):
-    for i in range(1):
-        # trees[i] = np.reshape(trees[i],(28,28))
-        maxLen = Imgs.objects.count()
-        if i < maxLen:
-            continue
-
-        for j in range(xy.count[i]):
-            plt.plot(xy.x[i][j],xy.y[i][j],color='black')
-        plt.axis('off')
-        btio = io.BytesIO()
-        file = plt.savefig(btio, format='png', facecolor='w')
-        btio = btio.getvalue()
-        encodebyte = base64.b64encode(btio)
-        strPNG = encodebyte.decode('ascii')
-        sql = Imgs.objects.create(
-            ImgNum = i,
-            ImgData = strPNG
-        )
-        sql.save()
-        print(str(i)+" fin.")
-        #im = Image.fromarray([xy.x[i],xy.y[i]])
-        # image = im.crop()
-        # bytearr = io.BytesIO()
-        # image.save(bytearr,format="PNG")
-        # bytearr = bytearr.getvalue()
-        # encodebyte = base64.b64encode(bytearr)
-        # str = encodebyte.decode('ascii')
-        # print(str)
-        # im.show()
-        # print(np.size(trees))
-        # print(len(trees))
-        # return HttpResponse("""
-        # <html>
-        #     <img src='data:image/png;base64,%s' style='width:280px'/>
-        #
-        # </html>
-        #
-        # """%str)
 
     return HttpResponse("HI")
     pass
+def houseTrain(request):
+    if request.method =="GET":
+        maxlen = 144721
+        config = configparser.ConfigParser()
+        config.read('Questions.ini',encoding='utf-8')
+        houseQuests = config['HouseQuests']
+        houses = []
+        questions = []
+        for opt in houseQuests:
+            houses.append(config.get('HouseQuests',opt))
+            questions.append(opt)
+            pass
+        print(houses)
+        tf = True
+        while True:
+            ran = random.randrange(0,maxlen)
+            for i in Houses.objects.all():
+                if ran != int(i.houseID)-1:
+                    tf = True
+                else:
+                    tf = False
+                    break
+            if tf == True:
+                break
+        num = ran
+        filename = 'house'+str(num)+'.png'
+        quest = []
+        for i in questions:
+            quest.append(re.sub("\d","",i))
+        count = Houses.objects.count()
+        return render(request, 'house.html',
+                      {'house': houses, 'quest': quest, 'hq': zip(houses, quest), 'housenum': num, 'houseurl': filename,
+                       'maxnum': 144721, 'count': count})
+
+
 def treeTrain(request):
     if request.method == "GET":
         config = configparser.ConfigParser()
@@ -93,12 +67,12 @@ def treeTrain(request):
             pass
         print(trees)
 
-        treearr = np.load('tree.npy')
-        filecounts = len(treearr)
-        print(filecounts)
+        # treearr = np.load('tree.npy')
+        # filecounts = len(treearr)
+        # print(filecounts)
         tf = True
         while True:
-            ran = random.randrange(0, filecounts)
+            ran = random.randrange(0, 144721)
             for i in Trees.objects.all():
                 if ran != int(i.treeID)-1:
                     tf = True
@@ -108,7 +82,7 @@ def treeTrain(request):
             if tf == True:
                 break
         pass
-
+        print('Create Random Number!')
         # for i in Trees.objects.all():
         #     while True:
         #         ran = random.randrange(0,filecounts)
@@ -120,14 +94,26 @@ def treeTrain(request):
         #             pass
         #         pass
 
-        img = np.reshape(treearr[ran],(28,28))
-        imarr = Image.fromarray(img)
-        imcrop = imarr.crop()
-        btio = io.BytesIO()
-        imcrop.save(btio,format='PNG')
-        btio = btio.getvalue()
-        encodebyte = base64.b64encode(btio)
-        strPNG = encodebyte.decode('ascii')
+        # img = np.reshape(treearr[ran],(28,28))
+        # imarr = Image.fromarray(img)
+        # imcrop = imarr.crop()
+        # btio = io.BytesIO()
+        # imcrop.save(btio,format='PNG')
+        # btio = btio.getvalue()
+        # encodebyte = base64.b64encode(btio)
+
+        # num = dbset[ran].ImgNum
+        num = ran
+        print("tree data load..")
+        print(())
+        filename = 'tree'+str(num)+'.png'
+
+
+        # tree = ranobj[ran]
+        # print(type(tree))
+        # print("tree data loaded!")
+        count = Trees.objects.count()
+        # strPNG = encodebyte.decode('ascii')
 
 
         # filenames = os.listdir(os.path.join(os.getcwd(),'static/images'))
@@ -148,7 +134,11 @@ def treeTrain(request):
             quest.append(re.sub("\d","",i))
         print(quest)
         # return render(request, 'index.html', {'trees':trees,'filename':filename,'quest':quest, 'tq' : zip(trees,quest),'treenum' :filename.split('.')[0].split('tree')[1]})
-        return render(request,'index.html',{'trees':trees,'quest':quest,'tq':zip(trees,quest),'treenum':ran,'treedata':strPNG,'maxnum':len(treearr)})
+        # return render(request,'index.html',{'trees':trees,'quest':quest,'tq':zip(trees,quest),'treenum':ran,'treedata':strPNG,'maxnum':len(treearr)})
+        return render(request, 'index.html',
+                  {'trees': trees, 'quest': quest, 'tq': zip(trees, quest), 'treenum': num, 'treeurl': filename,
+                   'maxnum': 144721,'count' : count})
+
     else:
         return HttpResponse("Please GET request..")
     pass
